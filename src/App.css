@@ -33,3 +33,10 @@
     font-weight: 500;
     color: #6f6f6f;
 }
+
+/* Menu Panel */
+
+.menu-panel {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}

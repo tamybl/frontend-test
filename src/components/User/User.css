@@ -11,3 +11,17 @@
     width: 100%;
     height: 100%;
 }
+
+.panel-user--item {
+    display: grid;
+    grid-template-columns: minmax(100px, 0.3fr) 0.7fr 2fr;
+    border: 1px solid #ccc;
+}
+
+.panel-user--item div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

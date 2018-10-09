@@ -1,0 +1,35 @@
+.main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.user-list {
+    background: #fff;
+    margin: 10px auto;
+}
+
+.title-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* border: 1px solid #cecece; */
+    -webkit-box-shadow: 1px 1px 10px 0px #c5c5c5;
+    -moz-box-shadow: 1px 1px 10px 0px #c5c5c5;
+    box-shadow: 1px 1px 10px 0px #c5c5c5;
+    /* padding: 5px 15px; */
+}
+
+.title-info h3 {
+    margin: 15px;
+    font-size: 18px;
+}
+
+.search input {
+    height: 30px;
+    width: 200px;
+}
+
+.title {
+    font-weight: 500;
+    color: #6f6f6f;
+}

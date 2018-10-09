@@ -1,7 +1,6 @@
-import React, {
-    Component
-} from 'react';
+import React, {Component} from 'react';
 import User from './components/User/User';
+import './App.css';
 
 // Obtener data mediante fetch
 const dataUsers = fetch('./db.json')
@@ -29,11 +28,26 @@ class App extends Component {
           
         render() {
             return ( 
-                <div>
-                    <h1> BPanel </h1> 
+                <div className="main">
+                    <h1 className="title">Panel <strong>Beetrack</strong> </h1> 
+                    <div className="menu-panel">
+                        <div className="search">
+                            <input type="text" placeholder="Buscar Contacto..."></input>
+                        </div>
+                    </div>
+
+                    <div className="user-list">
+                        <div className="title-info">
+                            <h3>Nombre</h3>
+                            <h3>Descripción</h3>
+                        </div> 
                     <User photo = "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?h=350&auto=compress&cs=tinysrgb" name = "Francisco" />
                     <User photo = "https://images.pexels.com/photos/193355/pexels-photo-193355.jpeg?h=350&auto=compress&cs=tinysrgb" name = "Pedro" />
                     <User photo = "https://images.pexels.com/photos/157661/young-woman-shooting-model-157661.jpeg?h=350&auto=compress&cs=tinysrgb" name = "María" />
+                    </div>
+
+                    
+
 
                 </div>
             )

@@ -8,6 +8,7 @@ class App extends Component {
         super(props);
         this.state = {
             users: [],
+            filterData: [],
             modal: false
           }
         }
@@ -21,12 +22,18 @@ class App extends Component {
         })
     .then((data) => {
         this.setState({users: data})
-    });
+    })
+    .catch(error => console.log('error fetching', error));
 
     }
-
-    handleHover(e) {
+    // Evento para hacer aparecer la opcion de eliminar
+    toggleDeleteHandler  = (e) => {
         e.preventDefault();
+    }
+    // Evento que permite filtrar
+    searchHandler = (e) => {
+        const filterData = this.state.users.filter(user => user.name.includes(e.target.value));
+        this.setState({filter: filterData});
     }
           
         render() {
@@ -36,10 +43,10 @@ class App extends Component {
                     <h1 className="title">Panel <strong>Beetrack</strong> </h1> 
                     <div className="menu-panel">
                         <div className="search">
-                            <input type="text" placeholder="Buscar Contacto..."></input>
+                            <input type="text" placeholder="Buscar Contacto..." onChange={this.searchHandler} value={this.state.value}></input>
                         </div>
                         <div className="btn-controls">
-                            <button className="btn-add-user">Nuevo Contacto</button>
+                            <button className="btn-add--user">Nuevo Contacto</button>
                         </div>
                     </div>
 
@@ -50,7 +57,7 @@ class App extends Component {
                         </div> 
                         
                          {users.map((user) => {
-                         return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} onMouseHover={this.handleHover} />)
+                         return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} onMouseHover={this.toggleDeleteHandler.bind(this)} />)
                             })}
                     </div>
 

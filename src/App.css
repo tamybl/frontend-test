@@ -40,3 +40,23 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
+
+.btn-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn-add--user {
+    background: #fab43d;
+    border-radius:4px;
+    height: 36px;
+    width: 200px;
+    border: none;
+    color: #fff;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    outline: 0;
+}

@@ -9,6 +9,7 @@ class App extends Component {
         this.state = {
             users: [],
             filter: [],
+            showDeleteBtn: false,
             modal: false
           }
         }
@@ -30,7 +31,9 @@ class App extends Component {
     }
     // Evento para hacer aparecer la opcion de eliminar
     toggleDeleteHandler  = (e) => {
-        e.preventDefault();
+        console.log('mouseover');
+        const doesShow = this.state.showDeleteBtn;
+        this.setState({showDeleteBtn: !doesShow});
     }
     // Evento que permite filtrar
     searchHandler = (e) => {
@@ -57,10 +60,11 @@ class App extends Component {
                             <h3>Nombre</h3>
                             <h3>Descripción</h3>
                         </div> 
-                        
-                         {filter.map((user) => {
-                         return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} onMouseHover={this.toggleDeleteHandler.bind(this)} />)
-                            })}
+                        { 
+                            filter.map((user) => {
+                         return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} mouseO={this.toggleDeleteHandler.bind(this)} deleteShow={this.state.showDeleteBtn} />)
+                            })
+                        }
                     </div>
 
                 </div>

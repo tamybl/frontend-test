@@ -8,7 +8,7 @@ class App extends Component {
         super(props);
         this.state = {
             users: [],
-            filterData: [],
+            filter: [],
             modal: false
           }
         }
@@ -21,7 +21,9 @@ class App extends Component {
         return response.json()
         })
     .then((data) => {
-        this.setState({users: data})
+        this.setState({users: data});
+        this.setState({filter: data});
+           
     })
     .catch(error => console.log('error fetching', error));
 
@@ -32,12 +34,12 @@ class App extends Component {
     }
     // Evento que permite filtrar
     searchHandler = (e) => {
-        const filterData = this.state.users.filter(user => user.name.includes(e.target.value));
+        const filterData = this.state.users.filter(user => user.name.toLowerCase().includes(e.target.value.toLowerCase()));
         this.setState({filter: filterData});
     }
           
         render() {
-            const { users } = this.state;
+            const { filter } = this.state;
             return ( 
                 <div className="main">
                     <h1 className="title">Panel <strong>Beetrack</strong> </h1> 
@@ -56,7 +58,7 @@ class App extends Component {
                             <h3>Descripción</h3>
                         </div> 
                         
-                         {users.map((user) => {
+                         {filter.map((user) => {
                          return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} onMouseHover={this.toggleDeleteHandler.bind(this)} />)
                             })}
                     </div>

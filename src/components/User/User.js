@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './User.css';
 
-const user = (props) => {
-    return (
-        <div  className='panel-user--item' key={props.id} >
-            <div className='user-item--photo'>
-                <img src={props.photo} />
-            </div>
-            <div className='user-item--name' onMouseOver={props.mouseO}>
-                <span>{props.name}</span>
+export default class User extends Component {
+    constructor() {
+        super();
+        this.state = {
+            show: false
+        }
+    }
 
-                { props.deleteShow ?
-                <span >Eliminar</span> : null }
+
+    // Evento para hacer aparecer la opcion de eliminar
+    mouseOverHandler = (e) => {
+        console.log(e.target);
+        this.setState({ show: true});
+    }
+    
+    mouseOutHandler = (e) => {
+        console.log(e.target);
+        this.setState({ show: false})
+    }
+
+    render () {
+        let { name, photo, description } = this.props.item;
+        return (
+        <div  className='panel-user--item'>
+            <div className='user-item--photo'>
+                <img src={photo} />
+            </div>
+            <div className='user-item--name'  onMouseOut={this.mouseOutHandler.bind(this)} onMouseOver={this.mouseOverHandler}>
+                <span>{name}</span>
+
+                { this.state.show ?
+                <div><span >Eliminar</span></div> : null }
             </div>
             <div className='user-item--description'>
-                <p>{props.description}</p>
+                <p>{description}</p>
             </div>
         </div>
-    )
+    )}
 } 
-
-export default user;

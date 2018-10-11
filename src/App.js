@@ -9,7 +9,6 @@ class App extends Component {
         this.state = {
             users: [],
             filter: [],
-            showDeleteBtn: false,
             modal: false
           }
         }
@@ -29,12 +28,7 @@ class App extends Component {
     .catch(error => console.log('error fetching', error));
 
     }
-    // Evento para hacer aparecer la opcion de eliminar
-    toggleDeleteHandler  = (e) => {
-        console.log('mouseover');
-        const doesShow = this.state.showDeleteBtn;
-        this.setState({showDeleteBtn: !doesShow});
-    }
+
     // Evento que permite filtrar
     searchHandler = (e) => {
         const filterData = this.state.users.filter(user => user.name.toLowerCase().includes(e.target.value.toLowerCase()));
@@ -62,7 +56,7 @@ class App extends Component {
                         </div> 
                         { 
                             filter.map((user) => {
-                         return (<User photo={user.photo} name={user.name} description={user.description} key={user.id} mouseO={this.toggleDeleteHandler.bind(this)} deleteShow={this.state.showDeleteBtn} />)
+                         return (<User item={user} key={user.id} deleteShow={this.state.showDeleteBtn} />)
                             })
                         }
                     </div>

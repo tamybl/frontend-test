@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './User.css';
+import Deleteuser from './../Deleteuser/Deleteuser';
 
 export default class User extends Component {
     constructor() {
@@ -32,7 +33,7 @@ export default class User extends Component {
                 <span>{name}</span>
 
                 { this.state.show ?
-                <div><span >Eliminar</span></div> : null }
+                <Deleteuser /> : null }
             </div>
             <div className='user-item--description'>
                 <p>{description}</p>
